@@ -1,15 +1,5 @@
-# Use this workspace to collaborate
-workspace:
-  id: c2ac96ec-b9b2-4b3f-84fd-33cdbe26ef8f
-
-localResources:
-  collections:
-    - ../Booking API Colection.postman_collection.json
-  environments:
-    - ../Booking API Environment.postman_environment.json
-
-# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
-
 cloudResources:
   collections:
-    ../postman/collections/Booking API Colection: 56533053-17aae3f7-9b49-4145-b79c-29f0c1e11252
+    ../postman/collections/Booking API Collection: 56533053-17aae3f7-9b49-4145-b79c-29f0c1e11252
+  environments:
+    ../postman/environments/Booking API Environment.environment.yaml: 56533053-2a548965-1a63-48d3-81c8-6449bafb077d
