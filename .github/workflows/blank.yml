@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-cloudResources:
-  collections:
-    ../postman/collections/Booking API Collection: 56533053-17aae3f7-9b49-4145-b79c-29f0c1e11252
-  environments:
-    ../postman/environments/Booking API Environment.environment.yaml: 56533053-2a548965-1a63-48d3-81c8-6449bafb077d
-=======
 name: Automated API tests using Postman CLI
 
 on: push
@@ -22,4 +15,3 @@ jobs:
       - name: Run API tests
         run: |
           postman collection run "56533053-17aae3f7-9b49-4145-b79c-29f0c1e11252" -e "56533053-2a548965-1a63-48d3-81c8-6449bafb077d"
->>>>>>> 90ed86695da34f73a76105b33d044e0a98f5d818
