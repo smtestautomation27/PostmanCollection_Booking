@@ -1,5 +1,6 @@
 $kind: http-request
-url: https://restful-booker.herokuapp.com/booking?firstname=Suman&lastname=Mallick
+name: Booking - GetBookingIds
+url: "{{baseUrl}}/booking?firstname=Suman&lastname=Mallick"
 method: GET
 queryParams:
   firstname: Suman

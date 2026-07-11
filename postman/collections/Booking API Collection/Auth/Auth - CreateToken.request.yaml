@@ -1,5 +1,6 @@
 $kind: http-request
-url: https://restful-booker.herokuapp.com/auth
+name: Auth - CreateToken
+url: "{{baseUrl}}/auth"
 method: POST
 headers:
   - key: Content-Type
