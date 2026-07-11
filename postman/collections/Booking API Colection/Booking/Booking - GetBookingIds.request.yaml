@@ -1,0 +1,45 @@
+$kind: http-request
+url: https://restful-booker.herokuapp.com/booking?firstname=Suman&lastname=Mallick
+method: GET
+queryParams:
+  firstname: Suman
+  lastname: Mallick
+scripts:
+  - type: afterResponse
+    code: "const responseBody = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Status code is 200\", function() {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Check if the response contains the correct booking ID\", function () {\r
+
+      \    let found = false;\r
+
+      \r
+
+      \    for (let id of responseBody) {\r
+
+      \        if (id.bookingid === pm.environment.get(\"bookingId\")) {\r
+
+      \            found = true;\r
+
+      \            break;\r
+
+      \        }\r
+
+      \    }\r
+
+      \r
+
+      \    pm.expect(found).to.be.true;\r
+
+      });"
+    language: text/javascript
+order: 3000

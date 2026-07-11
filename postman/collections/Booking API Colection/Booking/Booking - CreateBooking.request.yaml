@@ -1,0 +1,49 @@
+$kind: http-request
+url: https://restful-booker.herokuapp.com/booking
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"firstname\" : \"Suman\",\r
+
+    \    \"lastname\" : \"Mallick\",\r
+
+    \    \"totalprice\" : 1500,\r
+
+    \    \"depositpaid\" : true,\r
+
+    \    \"bookingdates\" : {\r
+
+    \        \"checkin\" : \"2026-07-10\",\r
+
+    \        \"checkout\" : \"2026-07-12\"\r
+
+    \    },\r
+
+    \    \"additionalneeds\" : \"Breakfast\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "const responseBody = pm.response.json();\r
+
+      pm.environment.set(\"bookingId\", responseBody.bookingid);\r
+
+      \r
+
+      pm.test(\"Status code is 200\", function() {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Boking id is not null\", function() {\r
+
+      \    pm.expect(responseBody.bookingid).to.not.be.null;\r
+
+      })\r\n"
+    language: text/javascript
+order: 1000

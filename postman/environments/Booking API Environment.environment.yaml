@@ -1,0 +1,6 @@
+name: Booking API Environment
+values:
+  - key: token
+    value: ''
+  - key: bookingId
+    value: ''

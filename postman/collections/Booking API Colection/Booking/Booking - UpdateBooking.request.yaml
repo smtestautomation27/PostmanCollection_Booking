@@ -1,0 +1,63 @@
+$kind: http-request
+url: https://restful-booker.herokuapp.com/booking/{{bookingId}}
+method: PUT
+headers:
+  Cookie: token={{token}}
+body:
+  type: json
+  content: "{\r
+
+    \    \"firstname\" : \"Torsa\",\r
+
+    \    \"lastname\" : \"Mukherjee\",\r
+
+    \    \"totalprice\" : 2500,\r
+
+    \    \"depositpaid\" : true,\r
+
+    \    \"bookingdates\" : {\r
+
+    \        \"checkin\" : \"2026-07-20\",\r
+
+    \        \"checkout\" : \"2026-07-25\"\r
+
+    \    },\r
+
+    \    \"additionalneeds\" : \"Breakfast & Dinner\"\r
+
+    }"
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: "const responseBody = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Status code is 200\", function() {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Check if the booking details are correct\", function () {\r
+
+      \    pm.expect(responseBody.firstname).to.eql(\"Torsa\");\r
+
+      \    pm.expect(responseBody.lastname).to.eql(\"Mukherjee\");\r
+
+      \    pm.expect(responseBody.totalprice).to.eql(2500);\r
+
+      \    pm.expect(responseBody.depositpaid).to.eql(true);\r
+
+      \    pm.expect(responseBody.bookingdates.checkin).to.eql(\"2026-07-20\");\r
+
+      \    pm.expect(responseBody.bookingdates.checkout).to.eql(\"2026-07-25\");\r
+
+      \    pm.expect(responseBody.additionalneeds).to.eql(\"Breakfast & Dinner\");\r
+
+      })"
+    language: text/javascript
+order: 4000

@@ -1,0 +1,6 @@
+$kind: collection
+variables:
+  - key: basic_auth_083a
+    secret: true
+  - key: auth_password_1abp
+    secret: true

@@ -1,0 +1,42 @@
+$kind: http-request
+url: https://restful-booker.herokuapp.com/booking/{{bookingId}}
+method: DELETE
+headers:
+  Cookie: token={{token}}
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 201\", function () {\r
+
+      \    pm.response.to.have.status(201);\r
+
+      });\r
+
+      \r
+
+      pm.sendRequest({\r
+
+      \    url: `https://restful-booker.herokuapp.com/booking/${pm.environment.get(\"bookingId\")}`,\r
+
+      \    method: 'GET',\r
+
+      \    header: {\r
+
+      \        'Content-Type': 'application/json'\r
+
+      \    }\r
+
+      }, function (err, res) {\r
+
+      \    pm.test(\"Deleted booking is no longer available\", function () {\r
+
+      \        pm.expect(err).to.equal(null);\r
+
+      \        pm.expect(res).to.exist;\r
+
+      \        pm.expect(res.code).to.equal(404);\r
+
+      \    });\r
+
+      });"
+    language: text/javascript
+order: 6000

@@ -1,0 +1,36 @@
+$kind: http-request
+url: https://restful-booker.herokuapp.com/booking/{{bookingId}}
+method: GET
+scripts:
+  - type: afterResponse
+    code: "const responseBody = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Status code is 200\", function() {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Check if the booking details are correct\", function () {\r
+
+      \    pm.expect(responseBody.firstname).to.eql(\"Suman\");\r
+
+      \    pm.expect(responseBody.lastname).to.eql(\"Mallick\");\r
+
+      \    pm.expect(responseBody.totalprice).to.eql(1500);\r
+
+      \    pm.expect(responseBody.depositpaid).to.eql(true);\r
+
+      \    pm.expect(responseBody.bookingdates.checkin).to.eql(\"2026-07-10\");\r
+
+      \    pm.expect(responseBody.bookingdates.checkout).to.eql(\"2026-07-12\");\r
+
+      \    pm.expect(responseBody.additionalneeds).to.eql(\"Breakfast\");\r
+
+      })"
+    language: text/javascript
+order: 2000
