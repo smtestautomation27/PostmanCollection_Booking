@@ -1,5 +1,6 @@
 $kind: http-request
-url: https://restful-booker.herokuapp.com/booking/{{bookingId}}
+name: Booking - PartialUpdateBooking
+url: "{{baseUrl}}/booking/{{bookingId}}"
 method: PATCH
 headers:
   Cookie: token={{token}}

@@ -1,5 +1,6 @@
 $kind: http-request
-url: https://restful-booker.herokuapp.com/booking
+name: Booking - CreateBooking
+url: "{{baseUrl}}/booking"
 method: POST
 body:
   type: json

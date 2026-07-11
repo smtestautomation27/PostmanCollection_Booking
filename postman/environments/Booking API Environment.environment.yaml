@@ -1,15 +1,9 @@
-owner: "56533053"
-team: "22862407"
-lastUpdatedBy: "56533053"
-lastRevision: 1783695048000
 name: Booking API Environment
-color: null
 values:
+  - key: baseUrl
+    value: ''
   - key: token
-    value: ""
-    enabled: true
+    value: ''
   - key: bookingId
-    value: ""
-    enabled: true
-createdAt: 2026-07-10T10:12:03.000Z
-updatedAt: 2026-07-10T14:50:48.000Z
+    value: ''
+color: 0
